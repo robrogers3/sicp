@@ -28,8 +28,6 @@
 	      (insert! x result table)
 	      result))))))
 	    
-	      
-
 (define memo-fib
   (memoize
    (lambda (n)
