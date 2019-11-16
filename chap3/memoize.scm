@@ -35,3 +35,13 @@
 	((= n 1) 1)
 	(else
 	 (+ (memo-fib (- n 1)) (memo-fib (- n 2))))))))
+
+(define (bar position)
+  (lambda (m . args)
+    (cond ((eq? m 'pos) position)
+	  ((eq? m 'set-pos) (set! position (car args)))
+	  ))
+  )
+(define ship (bar 1))
+(display ship)
+(display (ship 'pos))

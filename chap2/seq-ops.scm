@@ -51,7 +51,7 @@
 	  (accumulate op init (cdr seq)))))
 (define (sum-odd-squares n)
   (accumulate + 0
-	      (map square
+	      (mapp square
 		   (filter odd?
 			   (enum-interval 0 n)))))
 
@@ -78,8 +78,8 @@
 
 (define (list-fib-squares n)
   (accumulate cons '()
-	      (map square
-		   (map fib
+	      (mapp square
+		   (mapp fib
 			(enum-interval 0 n)))))
 
 
@@ -362,7 +362,6 @@
 	       (adjoin-position new-row col rest-of-queens))
 	     (enum-interval 1 board-size)))
 	  (queens-cols (- col 1))))))
-  
   (queens-cols board-size))
 
 (define empty-board nil)
@@ -375,7 +374,7 @@
 (define (safe? col position)
   #t)
 (define (queens board-size)
-  (define (queen-cols k)  
+  (define (queen-cols k)
     (if (= k 0)
         (list empty-board)
         (filter
